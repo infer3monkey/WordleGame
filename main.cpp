@@ -1,10 +1,7 @@
 #include <iostream>
 #include "wordle_functions.h"
 
-#define GREEN "\033[42;30m"
-#define GRAY "\033[47;30m"
-#define YELLOW "\033[43;30m"
-#define RESET "\033[0m"
+
 
 using namespace std;
 
@@ -23,7 +20,7 @@ int main(int argc, char* argv[]) {
     string attempt = "";
     cin >> attempt;
 
-    cout << GRAY << attempt << RESET << endl;
+    cout << yellow(attempt) << endl;
 
     return 0;
 }
