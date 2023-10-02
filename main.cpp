@@ -28,12 +28,12 @@ int main(int argc, char* argv[]) {
         } else { //valid attempt. go through every letter and give back the right colors
             for(int i = 0; i < 5;i++){
                 if(attempt[i] == solution[i]){//green
-                    cout << green(attempt[i]) << " ";
+                    cout << green(attempt[i]);
                 } else if (attempt[i] == solution[0] || attempt[i] == solution[1] || attempt[i] == solution[2] || attempt[i] == solution[3] || attempt[i] == solution[4]){
                     //yellow
-                    cout << yellow(attempt[i]) << " ";
+                    cout << yellow(attempt[i]);
                 } else { //gray
-                    cout << gray(attempt[i]) << " ";
+                    cout << gray(attempt[i]);
                 }
             }
         }
