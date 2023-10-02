@@ -31,6 +31,15 @@ std::string gray(char letter){
     return result;
 }
 
+int contains (char letter, std::string str){
+    for (int i = 0; i < str.length();i++){
+        if (letter == str[i]){
+            return i;
+        }
+    }
+    return -1;
+}
+
 
 // Include functions here
 

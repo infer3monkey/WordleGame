@@ -16,28 +16,34 @@ int main(int argc, char* argv[]) {
     //Create Main Menu
 
     //TODO: select this randomly from the words.txt file
-    string solution = "SLATE";
+    string realsolution = "SLATE";
     string attempt = "";
-
+    string solution;
     bool notfinished = true;
 
     while (notfinished){
+        solution = realsolution;
         cin >> attempt;
         if (attempt.length() != 5){
             cout << "invalid length try again" << endl;
         } else { //valid attempt. go through every letter and give back the right colors
-            for(int i = 0; i < 5;i++){
+            for(int i = 0; i < 5;i++){ // SLATE and SLASA as the guess would only have first s as green
+                //SLATE AND ASASA as the guess would only have the first s as yellow
+                //use a place holder
                 if(attempt[i] == solution[i]){//green
                     cout << green(attempt[i]);
-                } else if (attempt[i] == solution[0] || attempt[i] == solution[1] || attempt[i] == solution[2] || attempt[i] == solution[3] || attempt[i] == solution[4]){
+                    solution[i] = '-';
+                } else if (contains(attempt[i], solution) != -1){
                     //yellow
                     cout << yellow(attempt[i]);
+                    solution[contains(attempt[i], solution)] = '-';
+                    //solution[i] = '-'; need to find where the thing
                 } else { //gray
                     cout << gray(attempt[i]);
                 }
             }
         }
-        if (attempt == solution){
+        if (attempt == realsolution){
             cout << "\nCongrats you solved the Wordle!" << endl;
             notfinished = false;
         }
