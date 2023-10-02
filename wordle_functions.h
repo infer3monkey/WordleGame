@@ -9,21 +9,22 @@
 #include<vector>
 #include<iostream>
 
-std::string yellow(std::string letter){
+//change the string to character possibly
+std::string yellow(char letter){
     std::string result = YELLOW;
     result += letter;
     result += RESET;
     return result;
 }
 
-std::string green(std::string letter){
+std::string green(char letter){
     std::string result = GREEN;
     result += letter;
     result += RESET;
     return result;
 }
 
-std::string gray(std::string letter){
+std::string gray(char letter){
     std::string result = GRAY;
     result += letter;
     result += RESET;
