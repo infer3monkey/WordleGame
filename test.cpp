@@ -1,11 +1,14 @@
 #include <igloo/igloo.h>
+#include "wordle_functions.h"
 
 using namespace igloo;
 
 Context(TODO){
-    /*
-        your test cases here
-    */
+    Spec(iisinstringigloo){
+        int expected = contains('i', "igloo");
+        int actual = 0;
+        Assert::That(expected, Equals(actual));
+    }
 };
 
 int main(int argc, const char* argv[]){
