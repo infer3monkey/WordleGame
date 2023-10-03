@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     string attempt = "";
     string solution;
     bool notfinished = true;
-
+    //hello
     vector<string> allowedlist; //look into changing this into a set if it is slow
 
     ifstream file;
