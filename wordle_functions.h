@@ -8,6 +8,7 @@
 
 #include<vector>
 #include<iostream>
+#include<algorithm>
 
 //change the string to character possibly
 std::string yellow(char letter){
@@ -54,8 +55,18 @@ std::vector<std::string> mainmenu(){
     menu.push_back("5. Exit");
     menu.push_back("                               ");
     menu.push_back("                               ");
-    menu.push_back("Select an option:")
+    menu.push_back("Select an option:");
+    return menu;
 }
+
+bool containsList(std::string lookingFor, std::vector<std::string> list){
+    if(std::find(list.begin(), list.end(), lookingFor) != list.end()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 
 // Include functions here
