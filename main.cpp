@@ -17,12 +17,12 @@ int main(int argc, char* argv[]) {
     //Create Main Menu
 
     //TODO: select this randomly from the words.txt file
-    string realsolution = "SLATE";
+    string realsolution = "acorn";
     string attempt = "";
     string solution;
     bool notfinished = true;
-    //hello
     vector<string> allowedlist; //look into changing this into a set if it is slow
+    vector<string> wordlist; //look into changing this into a set if it is slow
 
     ifstream file;
     file.open("allowed.txt", ios::in);
@@ -33,6 +33,20 @@ int main(int argc, char* argv[]) {
             allowedlist.push_back(word);
         }
     }
+
+    file.close();
+
+    ifstream file2;
+    file2.open("words.txt", ios::in);
+
+    if (file2.is_open()){
+        string word;
+        while(file2 >> word){
+            wordlist.push_back(word);
+        }
+    }
+
+    file2.close();
 
     vector<string> mainmenustring = mainmenu();
 
@@ -46,12 +60,13 @@ int main(int argc, char* argv[]) {
 
     bool mainmenu = true;
 
-    while(mainmenu){
+    while(mainmenu){ //main menu screen making sure input is valid
         string playerInput;
         cin >> playerInput;
 
         if (stoi(playerInput) == 1){//player wants to play wordle
             mainmenu = false;
+            cout << endl;
             //can put the code here if needed?
         } else {
             cout << "not a proper option or have not created it" << endl;
@@ -60,16 +75,17 @@ int main(int argc, char* argv[]) {
         
     }
     
-
-
     while (notfinished){ //the actual wordle game itself
         solution = realsolution;
-        cout << "Your input: ";
+        cout << "Your guess: ";
         cin >> attempt;
+
+        bool inAllowed = containsList(attempt, allowedlist);
+        bool inWords = containsList(attempt, wordlist);
 
         if (attempt.length() != 5){
             cout << "invalid length try again" << endl;
-        } else if (containsList(attempt, allowedlist)!= true){
+        } else if (inWords == false && inAllowed == false){
             cout << "invalid word try again" << endl;
         } else { //valid attempt. go through every letter and give back the right colors
             for(int i = 0; i < 5;i++){ 

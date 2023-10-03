@@ -44,7 +44,7 @@ int contains (char letter, std::string str){
 std::vector<std::string> mainmenu(){
     std::vector<std::string> menu;
     menu.push_back("===============================");
-    menu.push_back("=      Welcome to Wordle      =");
+    menu.push_back("       Welcome to Wordle       ");
     menu.push_back("===============================");
     menu.push_back("                               ");
     menu.push_back("                               ");
