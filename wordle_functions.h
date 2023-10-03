@@ -49,8 +49,12 @@ std::vector<std::string> mainmenu(){
     menu.push_back("                               ");
     menu.push_back("1. Play Wordle");
     menu.push_back("2. How to Play");
-    menu.push_back("3. Statistics Summary")
-
+    menu.push_back("3. Statistics Summary");
+    menu.push_back("4. Reset Statistics");
+    menu.push_back("5. Exit");
+    menu.push_back("                               ");
+    menu.push_back("                               ");
+    menu.push_back("Select an option:")
 }
 
 
