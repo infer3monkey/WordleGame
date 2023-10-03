@@ -34,7 +34,30 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    while (notfinished){
+    vector<string> mainmenustring = mainmenu();
+    for (int i = 0; i < mainmenustring.size();i++){//printing out main menu
+        if(i+1 != mainmenustring.size()){
+            cout << mainmenustring[i] << endl;
+        } else {
+            cout << mainmenustring[i];
+        }
+        
+    }
+
+    bool mainmenu = true;
+    
+    while(mainmenu){
+
+    }
+    string playerInput;
+    cin >> playerInput;
+
+    if (stoi(playerInput) == 1){//player wants to play wordle
+
+    }
+
+
+    while (notfinished){ //the actual wordle game itself
         solution = realsolution;
         cout << "Your input: ";
         cin >> attempt;
