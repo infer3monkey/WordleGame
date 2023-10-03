@@ -35,26 +35,31 @@ int main(int argc, char* argv[]) {
     }
 
     vector<string> mainmenustring = mainmenu();
+
     for (int i = 0; i < mainmenustring.size();i++){//printing out main menu
         if(i+1 != mainmenustring.size()){
             cout << mainmenustring[i] << endl;
         } else {
-            cout << mainmenustring[i];
+            cout << mainmenustring[i]; //last element no endl
         }
-        
     }
 
     bool mainmenu = true;
-    
+
     while(mainmenu){
+        string playerInput;
+        cin >> playerInput;
 
+        if (stoi(playerInput) == 1){//player wants to play wordle
+            mainmenu = false;
+            //can put the code here if needed?
+        } else {
+            cout << "not a proper option or have not created it" << endl;
+            cout << "Select an option:";
+        }
+        
     }
-    string playerInput;
-    cin >> playerInput;
-
-    if (stoi(playerInput) == 1){//player wants to play wordle
-
-    }
+    
 
 
     while (notfinished){ //the actual wordle game itself
