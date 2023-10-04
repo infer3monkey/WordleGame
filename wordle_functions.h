@@ -79,7 +79,27 @@ bool containsList(std::string lookingFor, std::vector<std::string> list){
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray
 
     std::string answer = "";
-    std::vector<int> list = {0, 0, 0, 0, 0};//0 stands for gray, 1 for yellow, 1 for green
+    std::vector<int> list = {0, 0, 0, 0, 0};//0 stands for gray, 1 for yellow, 2 for green
+
+    for(int i = 0; i < 5; i++){//loop for finding green
+        if(attempt[i] == solution[i]){
+            list[i] = 2;
+            solution[i] = '-';
+        }
+    }
+
+    for(int i =0; i < 5; i++){
+        if(list[i] != 2){//if value not already green
+            if(contains(attempt[i], solution) != -1){//value exists therefore yellow
+                list[i] = 1;
+                solution[contains(attempt[i], solution)] = '-';
+            }
+        }
+    }
+
+    for(int i = 0; i < 5; i++){//loop that creates the string
+
+    }
 
     /*for(int i = 0; i < 5;i++){ 
                 if(attempt[i] == solution[i]){//green
