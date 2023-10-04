@@ -1,28 +1,17 @@
 #include <iostream>
 #include "wordle_functions.h"
-#include<fstream>
-
-
+#include <fstream>
 
 using namespace std;
 
-//git init
-//git add .
-//git commit -m "message"
-//git log 
-//git checkout 
-//more stuff in slides if needed
-
 int main(int argc, char* argv[]) {
-    //Create Main Menu
 
     //TODO: select this randomly from the words.txt file
-    string realsolution = "acorn";
+    string solution = "slate";
     string attempt = "";
-    string solution;
     bool notfinished = true;
-    vector<string> allowedlist; //look into changing this into a set if it is slow
-    vector<string> wordlist; //look into changing this into a set if it is slow
+    vector<string> allowedlist;
+    vector<string> wordlist;
 
     ifstream file;
     file.open("allowed.txt", ios::in);
@@ -75,8 +64,7 @@ int main(int argc, char* argv[]) {
         
     }
     
-    while (notfinished){ //the actual wordle game itself
-        solution = realsolution;
+    while (notfinished){ //where the input happens for the wordle game
         cout << "Your guess: ";
         cin >> attempt;
 
@@ -87,11 +75,10 @@ int main(int argc, char* argv[]) {
             cout << "invalid length try again" << endl;
         } else if (inWords == false && inAllowed == false){
             cout << "invalid word try again" << endl;
-        //move this into wordle_functions.h as a function
-        } else { //valid attempt. go through every letter and give back the right colors
-            cout << endl;
+        } else { //valid attempt return the word with correct colors
+            cout << wordleGame(attempt, solution) << endl;
         }
-        if (attempt == realsolution){
+        if (attempt == solution){
             cout << "\nCongrats you solved the Wordle!" << endl;
             notfinished = false;
         }
