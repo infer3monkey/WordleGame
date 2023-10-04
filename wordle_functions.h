@@ -67,15 +67,6 @@ bool containsList(std::string lookingFor, std::vector<std::string> list){
     }
 }
 
-/*int isGreen(std::string input, std::string str){//returns -1 if there is no exact position that should be green otherwise returns index where it should be green
-    for (int i = 0; i < str.length();i++){
-        if (input[i] == str[i]){//checking if it is green. first occurence
-            return i;
-        }
-        return -1;//there is no value wehre this would be green
-    }
-}*/
-
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray
 
     std::string answer = "";
@@ -98,26 +89,20 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
     }
 
     for(int i = 0; i < 5; i++){//loop that creates the string
-
+        std::string result;
+        if(list[i] == 2){//if value is supposed to be green
+            result = GREEN;
+            
+        } else if(list[i] == 1){//if value is supposed to be yellow
+            result = YELLOW;
+        } else {
+            result = GRAY;
+        }
+        result += attempt[i];
+        result += RESET;
+        answer += result;
     }
-
-    /*for(int i = 0; i < 5;i++){ 
-                if(attempt[i] == solution[i]){//green
-                    cout << green(attempt[i]);
-                    solution[i] = '-';
-                } else if (contains(attempt[i], solution) != -1){//yellow
-                    if(isGreen(attempt, solution) == -1){
-                        cout << yellow(attempt[i]);
-                        solution[contains(attempt[i], solution)] = '-';
-                    } else { //there is another value that should be green
-                        cout << gray(attempt[i]);
-                        //solution[contains(attempt[i], solution)] = '-';
-                    }
-                    
-                } else { //gray
-                    cout << gray(attempt[i]);
-                }
-            }*/
+    return answer;
 }
 
 
