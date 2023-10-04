@@ -89,23 +89,6 @@ int main(int argc, char* argv[]) {
             cout << "invalid word try again" << endl;
         //move this into wordle_functions.h as a function
         } else { //valid attempt. go through every letter and give back the right colors
-            for(int i = 0; i < 5;i++){ 
-                if(attempt[i] == solution[i]){//green
-                    cout << green(attempt[i]);
-                    solution[i] = '-';
-                } else if (contains(attempt[i], solution) != -1){//yellow
-                    if(isGreen(attempt, solution) == -1){
-                        cout << yellow(attempt[i]);
-                        solution[contains(attempt[i], solution)] = '-';
-                    } else { //there is another value that should be green
-                        cout << gray(attempt[i]);
-                        //solution[contains(attempt[i], solution)] = '-';
-                    }
-                    
-                } else { //gray
-                    cout << gray(attempt[i]);
-                }
-            }
             cout << endl;
         }
         if (attempt == realsolution){
