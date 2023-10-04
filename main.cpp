@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
             //can put the code here if needed?
         } else {
             cout << "not a proper option or have not created it" << endl;
-            cout << "Select an option:";
+            cout << "Select a number:";
         }
         
     }
@@ -87,6 +87,7 @@ int main(int argc, char* argv[]) {
             cout << "invalid length try again" << endl;
         } else if (inWords == false && inAllowed == false){
             cout << "invalid word try again" << endl;
+        //move this into wordle_functions.h as a function
         } else { //valid attempt. go through every letter and give back the right colors
             for(int i = 0; i < 5;i++){ 
                 if(attempt[i] == solution[i]){//green

@@ -55,7 +55,7 @@ std::vector<std::string> mainmenu(){
     menu.push_back("5. Exit");
     menu.push_back("                               ");
     menu.push_back("                               ");
-    menu.push_back("Select an option:");
+    menu.push_back("Select a number:");
     return menu;
 }
 
