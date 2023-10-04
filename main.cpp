@@ -5,6 +5,8 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+    //Select randomly, put more things into header file, add the seperate main menu options
+    //you only have 6 attempts to get it right not infinite
 
     //TODO: select this randomly from the words.txt file
     string solution = "slate";
@@ -53,7 +55,7 @@ int main(int argc, char* argv[]) {
         string playerInput;
         cin >> playerInput;
 
-        if (stoi(playerInput) == 1){//player wants to play wordle
+        if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
             mainmenu = false;
             cout << endl;
             //can put the code here if needed?
@@ -63,9 +65,9 @@ int main(int argc, char* argv[]) {
         }
         
     }
-    
-    while (notfinished){ //where the input happens for the wordle game
-        cout << "Your guess: ";
+
+    for(int i = 0; i < 6; i++){
+        cout << "Guess #" << i+1 << ":";
         cin >> attempt;
 
         bool inAllowed = containsList(attempt, allowedlist);
@@ -81,6 +83,7 @@ int main(int argc, char* argv[]) {
         if (attempt == solution){
             cout << "\nCongrats you solved the Wordle!" << endl;
             notfinished = false;
+            break;
         }
     }
 
