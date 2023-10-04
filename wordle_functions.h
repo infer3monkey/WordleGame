@@ -67,6 +67,15 @@ bool containsList(std::string lookingFor, std::vector<std::string> list){
     }
 }
 
+int isGreen(std::string input, std::string str){//returns -1 if there is no exact position that should be green otherwise returns index where it should be green
+    for (int i = 0; i < str.length();i++){
+        if (input[i] == str[i]){//checking if it is green. first occurence
+            return i;
+        }
+        return -1;//there is no value wehre this would be green
+    }
+}
+
 
 
 // Include functions here
