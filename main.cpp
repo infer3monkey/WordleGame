@@ -5,13 +5,13 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //Select randomly, put more things into header file, add the seperate main menu options
-    //you only have 6 attempts to get it right not infinite
+    //Select randomly, put more things into header file, add the separate main menu options
+    //you only have 6 attempts to get it right not infinite, make more visually appealing
+    //add unit tests especially for the wordle game itself, add keyboard viewer
 
-    //TODO: select this randomly from the words.txt file
     string solution = "slate";
     string attempt = "";
-    bool notfinished = true;
+    string playerInput = "";
     vector<string> allowedlist;
     vector<string> wordlist;
 
@@ -52,7 +52,6 @@ int main(int argc, char* argv[]) {
     bool mainmenu = true;
 
     while(mainmenu){ //main menu screen making sure input is valid
-        string playerInput;
         cin >> playerInput;
 
         if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
@@ -67,7 +66,7 @@ int main(int argc, char* argv[]) {
     }
 
     for(int i = 0; i < 6; i++){
-        cout << "Guess #" << i+1 << ":";
+        //cout << "Guess #" << i+1 << ":";
         cin >> attempt;
 
         bool inAllowed = containsList(attempt, allowedlist);
@@ -75,17 +74,19 @@ int main(int argc, char* argv[]) {
 
         if (attempt.length() != 5){
             cout << "invalid length try again" << endl;
+            i--;//invalid attempt
         } else if (inWords == false && inAllowed == false){
             cout << "invalid word try again" << endl;
+            i--;//invalid attempt
         } else { //valid attempt return the word with correct colors
             cout << wordleGame(attempt, solution) << endl;
         }
         if (attempt == solution){
-            cout << "\nCongrats you solved the Wordle!" << endl;
-            notfinished = false;
+            cout << "\nCongrats you solved the Wordle in " << i+1 << " attempts!" << endl;
             break;
         }
     }
+    cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
 
     return 0;
 }
