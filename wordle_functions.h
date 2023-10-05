@@ -10,28 +10,6 @@
 #include<iostream>
 #include<algorithm>
 
-//change the string to character possibly
-std::string yellow(char letter){
-    std::string result = YELLOW;
-    result += letter;
-    result += RESET;
-    return result;
-}
-
-std::string green(char letter){
-    std::string result = GREEN;
-    result += letter;
-    result += RESET;
-    return result;
-}
-
-std::string gray(char letter){
-    std::string result = GRAY;
-    result += letter;
-    result += RESET;
-    return result;
-}
-
 int contains (char letter, std::string str){
     for (int i = 0; i < str.length();i++){
         if (letter == str[i]){
@@ -41,22 +19,23 @@ int contains (char letter, std::string str){
     return -1;
 }
 
-std::vector<std::string> mainmenu(){
-    std::vector<std::string> menu;
-    menu.push_back("===============================");
-    menu.push_back("       Welcome to Wordle       ");
-    menu.push_back("===============================");
-    menu.push_back("                               ");
-    menu.push_back("                               ");
-    menu.push_back("1. Play Wordle");
-    menu.push_back("2. How to Play");
-    menu.push_back("3. Statistics Summary");
-    menu.push_back("4. Reset Statistics");
-    menu.push_back("5. Exit");
-    menu.push_back("                               ");
-    menu.push_back("                               ");
-    menu.push_back("Select a number:");
-    return menu;
+std::string mainmenu(){
+    std::string str;
+    str += "===============================\n";
+    str += "       Welcome to Wordle       \n";
+    str += "===============================\n";
+    str += "\n";
+    str += "\n";
+    str += "1. Play Wordle\n";
+    str += "2. How to Play\n";
+    str += "3. Statistics Summary\n";
+    str += "4. Reset Statistics\n";
+    str += "5. Exit\n";
+    str += "\n";
+    str += "\n";
+    str += "Select a number:";
+
+    return str;
 }
 
 bool containsList(std::string lookingFor, std::vector<std::string> list){
@@ -97,7 +76,6 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         } else {
             result = GRAY;
         }
-        //result += attempt[i];
         result += " --- ";
         result += RESET;
         answer += result;
@@ -132,7 +110,6 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         } else {
             result = GRAY;
         }
-        //result += attempt[i];
         result += " --- ";
         result += RESET;
         answer += result;

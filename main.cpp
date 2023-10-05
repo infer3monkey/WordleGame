@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     //Select randomly, put more things into header file, add the separate main menu options(stats)
-    //make more visually appealing
+    //make more visually appealing(made better but can still improve)
     //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer
 
     string solution = "worry";
@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
     vector<string> allowedlist;
     vector<string> wordlist;
     vector<string> attemptlist;
+    bool won = false;
 
     ifstream file;
     file.open("allowed.txt", ios::in);
@@ -38,15 +39,8 @@ int main(int argc, char* argv[]) {
         file2.close();
     }
 
-    vector<string> mainmenustring = mainmenu();
-
-    for (int i = 0; i < mainmenustring.size();i++){//printing out main menu
-        if(i+1 != mainmenustring.size()){
-            cout << mainmenustring[i] << endl;
-        } else {
-            cout << mainmenustring[i]; //last element no endl
-        }
-    }
+    cout << mainmenu();
+    
 
     bool mainmenu = true;
 
@@ -84,11 +78,15 @@ int main(int argc, char* argv[]) {
         }
         if (attempt == solution){
             cout << "\nCongrats you solved the Wordle in " << i+1 << " attempts!" << endl;
+            won = true;
             break;
         }
     }
-
-    cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
+    
+    if (won == false){//loss message
+        cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
+    }
+    
 
     return 0;
 }
