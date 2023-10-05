@@ -6,8 +6,8 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     //Select randomly, put more things into header file, add the separate main menu options(stats)
-    //you only have 6 attempts to get it right not infinite, make more visually appealing
-    //add unit tests especially for the wordle game itself, add keyboard viewer
+    //make more visually appealing
+    //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer
 
     string solution = "worry";
     string attempt = "";
@@ -57,7 +57,6 @@ int main(int argc, char* argv[]) {
             mainmenu = false;
             cout << endl;
             cout << "You Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
-            //can put the code here if needed?
         } else {
             cout << "not a proper option or have not created it" << endl;
             cout << "Select a number:";
@@ -65,8 +64,7 @@ int main(int argc, char* argv[]) {
         
     }
 
-    for(int i = 0; i < 6; i++){
-        //cout << "Guess #" << i+1 << ":";
+    for(int i = 0; i < 6; i++){//wordle game
         cin >> attempt;
 
         bool inAllowed = containsList(attempt, allowedlist);
@@ -89,6 +87,7 @@ int main(int argc, char* argv[]) {
             break;
         }
     }
+
     cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
 
     return 0;
