@@ -92,16 +92,17 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         std::string result;
         if(list[i] == 2){//if value is supposed to be green
             result = GREEN;
-            
         } else if(list[i] == 1){//if value is supposed to be yellow
             result = YELLOW;
         } else {
             result = GRAY;
         }
-        result += attempt[i];
+        //result += attempt[i];
+        result += " --- ";
         result += RESET;
         answer += result;
     }
+    answer += "\n";
 
     for(int i = 0; i < 5; i++){//loop that creates the string
         std::string result;
@@ -113,10 +114,13 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         } else {
             result = GRAY;
         }
+        result += "| ";
         result += attempt[i];
+        result += " |";
         result += RESET;
         answer += result;
     }
+    answer += "\n";
 
     for(int i = 0; i < 5; i++){//loop that makes more visually appealing
         std::string result;
@@ -128,7 +132,8 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         } else {
             result = GRAY;
         }
-        result += attempt[i];
+        //result += attempt[i];
+        result += " --- ";
         result += RESET;
         answer += result;
     }
