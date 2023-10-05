@@ -5,15 +5,16 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //Select randomly, put more things into header file, add the separate main menu options
+    //Select randomly, put more things into header file, add the separate main menu options(stats)
     //you only have 6 attempts to get it right not infinite, make more visually appealing
     //add unit tests especially for the wordle game itself, add keyboard viewer
 
-    string solution = "slate";
+    string solution = "worry";
     string attempt = "";
     string playerInput = "";
     vector<string> allowedlist;
     vector<string> wordlist;
+    vector<string> attemptlist;
 
     ifstream file;
     file.open("allowed.txt", ios::in);
@@ -23,9 +24,8 @@ int main(int argc, char* argv[]) {
         while(file >> word){
             allowedlist.push_back(word);
         }
+        file.close();
     }
-
-    file.close();
 
     ifstream file2;
     file2.open("words.txt", ios::in);
@@ -35,9 +35,8 @@ int main(int argc, char* argv[]) {
         while(file2 >> word){
             wordlist.push_back(word);
         }
+        file2.close();
     }
-
-    file2.close();
 
     vector<string> mainmenustring = mainmenu();
 
@@ -57,6 +56,7 @@ int main(int argc, char* argv[]) {
         if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
             mainmenu = false;
             cout << endl;
+            cout << "You Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
             //can put the code here if needed?
         } else {
             cout << "not a proper option or have not created it" << endl;
@@ -79,7 +79,10 @@ int main(int argc, char* argv[]) {
             cout << "invalid word try again" << endl;
             i--;//invalid attempt
         } else { //valid attempt return the word with correct colors
-            cout << wordleGame(attempt, solution) << endl;
+            attemptlist.push_back(wordleGame(attempt, solution));
+            for(int i = 0; i < attemptlist.size();i++){
+                cout << attemptlist[i] << endl;
+            }
         }
         if (attempt == solution){
             cout << "\nCongrats you solved the Wordle in " << i+1 << " attempts!" << endl;
