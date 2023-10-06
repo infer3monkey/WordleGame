@@ -6,10 +6,9 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     //Select randomly, put more things into header file, add the separate main menu options(stats)
-    //make more visually appealing(made better but can still improve)
+    //make more visually appealing(made better but can still improve), let people play again
     //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer
 
-    string solution = "worry";
     string attempt = "";
     string playerInput = "";
     vector<string> allowedlist;
@@ -40,6 +39,8 @@ int main(int argc, char* argv[]) {
     }
 
     cout << mainmenu();
+
+    string solution = chooseRandom(wordlist);
     
 
     bool mainmenu = true;
@@ -82,7 +83,7 @@ int main(int argc, char* argv[]) {
             break;
         }
     }
-    
+
     if (won == false){//loss message
         cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
     }

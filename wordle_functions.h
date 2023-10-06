@@ -46,6 +46,12 @@ bool containsList(std::string lookingFor, std::vector<std::string> list){
     }
 }
 
+std::string chooseRandom(std::vector<std::string> words){
+    srand((unsigned) time(NULL));
+    int random = (rand() % words.size());
+    return words[random];
+}
+
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray
 
     std::string answer = "";
