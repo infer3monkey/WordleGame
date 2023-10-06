@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     cout << mainmenu();
 
-    string solution = chooseRandom(wordlist);
+    string solution = chooseRandom(wordlist);//randomly generated solution
     
 
     bool mainmenu = true;
@@ -49,12 +49,13 @@ int main(int argc, char* argv[]) {
         cin >> playerInput;
 
         if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
-            mainmenu = false;
-            cout << endl;
-            cout << "You Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
+            mainmenu = false;//change this later
+            cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
+        } else if (stoi(playerInput) == 2) {//player wants to go to how to play screen
+            cout << howtoplaymenu();
+            
         } else {
-            cout << "not a proper option or have not created it" << endl;
-            cout << "Select a number:";
+            cout << "not a proper option or have not created it\nSelect a number:";
         }
         
     }

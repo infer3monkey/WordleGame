@@ -1,9 +1,9 @@
 #ifndef WORDLE_FUNCTIONS_H
 #define WORDLE_FUNCTIONS_H
 
-#define GREEN "\033[42;30m"
-#define GRAY "\033[47;30m"
-#define YELLOW "\033[43;30m"
+#define GREEN "\033[32m"//was 42 and 30
+#define GRAY "\033[37m"//was 47;30m
+#define YELLOW "\033[33m"//was 43 and 30
 #define RESET "\033[0m"
 
 #include<vector>
@@ -58,10 +58,11 @@ std::string howtoplaymenu(){
     howtoplay += "          HOW TO PLAY          \n";
     howtoplay += "===============================\n";
     howtoplay += "Guess the Wordle in 6 tries\n\n\n";
-    howtoplay += "How To Play:";
+    howtoplay += "How To Play:\n";
     howtoplay += "- Each guess must be a valid five letter word\n";
     howtoplay += "- The color of the letters will change to help\nguide you to victory\n\n";
-    //howtoplay += "";
+    howtoplay += GREEN "hello" RESET;//this works optimize stuff
+    return howtoplay;
 }
 
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray
@@ -94,7 +95,7 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         } else {
             result = GRAY;
         }
-        result += " --- ";
+        result += "/---\\";
         result += RESET;
         answer += result;
     }
@@ -128,7 +129,7 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         } else {
             result = GRAY;
         }
-        result += " --- ";
+        result += "\\---/";
         result += RESET;
         answer += result;
     }
