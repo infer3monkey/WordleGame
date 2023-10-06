@@ -52,6 +52,18 @@ std::string chooseRandom(std::vector<std::string> words){
     return words[random];
 }
 
+std::string howtoplaymenu(){
+    std::string howtoplay;
+    howtoplay += "===============================\n";
+    howtoplay += "          HOW TO PLAY          \n";
+    howtoplay += "===============================\n";
+    howtoplay += "Guess the Wordle in 6 tries\n\n\n";
+    howtoplay += "How To Play:";
+    howtoplay += "- Each guess must be a valid five letter word\n";
+    howtoplay += "- The color of the letters will change to help\nguide you to victory\n\n";
+    //howtoplay += "";
+}
+
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray
 
     std::string answer = "";
