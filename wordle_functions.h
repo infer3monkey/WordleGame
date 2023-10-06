@@ -4,6 +4,7 @@
 #define GREEN "\033[32m"//was 42 and 30
 #define GRAY "\033[37m"//was 47;30m
 #define YELLOW "\033[33m"//was 43 and 30
+#define BOLD "\033[1m"
 #define RESET "\033[0m"
 
 #include<vector>
@@ -61,7 +62,10 @@ std::string howtoplaymenu(){
     howtoplay += "How To Play:\n";
     howtoplay += "- Each guess must be a valid five letter word\n";
     howtoplay += "- The color of the letters will change to help\nguide you to victory\n\n";
-    howtoplay += GREEN "hello" RESET;//this works optimize stuff
+    howtoplay += GREEN "/---\\" RESET "/---\\/---\\/---\\/---\\\n";//this works optimize stuff
+    howtoplay += GREEN"| H |" RESET "| E || L || L || O |\n";
+    howtoplay += GREEN "\\---/" RESET "\\---/\\---/\\---/\\---/\n";
+    howtoplay += BOLD "H " RESET "is in the word and the correct spot";
     return howtoplay;
 }
 

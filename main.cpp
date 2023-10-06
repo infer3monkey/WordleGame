@@ -5,9 +5,8 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //put more things into header file, add the separate main menu options(stats)
-    //make more visually appealing(made better but can still improve), let people play again
-    //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer
+    //put more things into header file, add the separate main menu options(stats, let people play again)
+    //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer, turn everything to caps
 
     string attempt = "";
     string playerInput = "";
