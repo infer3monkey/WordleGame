@@ -6,8 +6,8 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //put more things into header file, add the separate main menu options(stats)
-    //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer, turn everything to caps
+    //put more things into header file/rename stuff for github publication, add stats
+    //add unit tests, add keyboard viewer, turn everything to caps
 
     string attempt = "";
     string playerInput = "";
@@ -15,29 +15,7 @@ int main(int argc, char* argv[]) {
     vector<string> attemptlist;
     bool won = false;
 
-    ifstream file2;
-    file2.open("words.txt", ios::in);
-
-    if (file2.is_open()){
-        string word;
-        while(file2 >> word){
-            wordlist.push_back(word);
-        }
-        file2.close();
-    }
-
-    string solution = chooseRandom(wordlist);//randomly generated solution
-
-    ifstream file;
-    file.open("allowed.txt", ios::in);
-
-    if (file.is_open()){
-        string word;
-        while(file >> word){
-            wordlist.push_back(word);
-        }
-        file.close();
-    }
+    
 
     cout << mainmenu();
 

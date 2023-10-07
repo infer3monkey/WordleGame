@@ -3,7 +3,6 @@
 
 using namespace igloo;
 
-//look at lecture 10 video to find out how to do unit test for color
 Context(TODO){
     Spec(iisinstringigloo){
         int actual = contains('i', "igloo");

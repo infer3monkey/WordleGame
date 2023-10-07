@@ -1,15 +1,16 @@
 #ifndef WORDLE_FUNCTIONS_H
 #define WORDLE_FUNCTIONS_H
 
-#define GREEN "\033[32m"//was 42 and 30
-#define GRAY "\033[37m"//was 47;30m
-#define YELLOW "\033[33m"//was 43 and 30
+#define GREEN "\033[32m"
+#define GRAY "\033[37m"
+#define YELLOW "\033[33m"
 #define BOLD "\033[1m"
 #define RESET "\033[0m"
 
 #include<vector>
 #include<iostream>
 #include<algorithm>
+#include<fstream>
 
 int contains (char letter, std::string str){
     for (int i = 0; i < str.length();i++){
@@ -76,6 +77,49 @@ std::string howtoplaymenu(){
     howtoplay += BOLD "C " RESET "is not in the word or the correct spot\n";
     howtoplay += "\n\nPress [enter] to continue";
     return howtoplay;
+}
+
+std::string solutiongeneration(){
+    std::vector<std::string> wordlist;
+    std::ifstream file2;
+    file2.open("words.txt", std::ios::in);
+
+    if (file2.is_open()){
+        std::string word;
+        while(file2 >> word){
+            wordlist.push_back(word);
+        }
+        file2.close();
+    }
+
+    return chooseRandom(wordlist);//randomly generated solution
+}
+
+std::vector<std::string> listgeneration(){
+    std::vector<std::string> wordlist;
+    std::ifstream file2;
+    file2.open("words.txt", std::ios::in);
+
+    if (file2.is_open()){
+        std::string word;
+        while(file2 >> word){
+            wordlist.push_back(word);
+        }
+        file2.close();
+    }
+
+    std::ifstream file;
+    file.open("allowed.txt", std::ios::in);
+
+    if (file.is_open()){
+        std::string word;
+        while(file >> word){
+            wordlist.push_back(word);
+        }
+        file.close();
+    }
+    
+    return wordlist;
 }
 
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray
