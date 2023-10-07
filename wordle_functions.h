@@ -12,7 +12,7 @@
 #include<algorithm>
 #include<fstream>
 
-int contains (char letter, std::string str){
+int contains (char letter, std::string str){//if letter is in string returns index it was found at otherwise returns -1
     for (int i = 0; i < str.length();i++){
         if (letter == str[i]){
             return i;
@@ -21,7 +21,7 @@ int contains (char letter, std::string str){
     return -1;
 }
 
-std::string mainmenu(){
+std::string mainmenu(){//creates a string with the main menu
     std::string str;
     str += "===============================\n";
     str += "       Welcome to Wordle       \n";
@@ -40,7 +40,7 @@ std::string mainmenu(){
     return str;
 }
 
-bool containsList(std::string lookingFor, std::vector<std::string> list){
+bool containsList(std::string lookingFor, std::vector<std::string> list){//returns whether or not a specific string is in a list of strings
     if(std::find(list.begin(), list.end(), lookingFor) != list.end()) {
         return true;
     } else {
@@ -48,7 +48,7 @@ bool containsList(std::string lookingFor, std::vector<std::string> list){
     }
 }
 
-std::string chooseRandom(std::vector<std::string> words){
+std::string chooseRandom(std::vector<std::string> words){//chooses a random index in given vector
     srand((unsigned) time(NULL));
     int random = (rand() % words.size());
     return words[random];
@@ -79,7 +79,7 @@ std::string howtoplaymenu(){
     return howtoplay;
 }
 
-std::string solutiongeneration(){
+std::string solutiongeneration(){//choose a random word from words.txt
     std::vector<std::string> wordlist;
     std::ifstream file2;
     file2.open("words.txt", std::ios::in);
@@ -95,7 +95,7 @@ std::string solutiongeneration(){
     return chooseRandom(wordlist);//randomly generated solution
 }
 
-std::vector<std::string> listgeneration(){
+std::vector<std::string> listgeneration(){//generates valid list from words.txt and allowed.txt
     std::vector<std::string> wordlist;
     std::ifstream file2;
     file2.open("words.txt", std::ios::in);
@@ -158,7 +158,7 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
     }
     answer += "\n";
 
-    for(int i = 0; i < 5; i++){//loop that creates the string
+    for(int i = 0; i < 5; i++){//loop that puts the letters in string
         std::string result;
         if(list[i] == 2){//if value is supposed to be green
             result = GREEN;

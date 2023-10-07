@@ -6,44 +6,35 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //put more things into header file/rename stuff for github publication, add stats
+    //rename stuff for github publication, add stats
     //add unit tests, add keyboard viewer, turn everything to caps
 
-    string attempt = "";
     string playerInput = "";
-    vector<string> wordlist;
+    vector<string> wordlist = listgeneration();
     vector<string> attemptlist;
+    string solution = solutiongeneration();
     bool won = false;
-
-    
-
     cout << mainmenu();
-
     bool mainmenubool = true;
 
-    while(mainmenubool){ //main menu screen making sure input is valid
+    while(mainmenubool){ //main menu
         getline(cin, playerInput);
 
-        if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
+        if (stoi(playerInput) == 1){//player wants to play wordle
             cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
-            for(int i = 0; i < 6; i++){//wordle game
-                getline(cin, attempt);
+            for(int i = 0; i < 6; i++){//loop for 6 attempts
+                getline(cin, playerInput);
 
-                bool inWords = containsList(attempt, wordlist);
-
-                if (attempt.length() != 5){
-                    cout << "invalid length try again" << endl;
-                    i--;
-                } else if (inWords == false){
-                    cout << "invalid word try again" << endl;
+                if (containsList(playerInput, wordlist) == false){
+                    cout << "invalid word" << endl;
                     i--;
                 } else { //valid attempt return the word with correct colors
-                    attemptlist.push_back(wordleGame(attempt, solution));
+                    attemptlist.push_back(wordleGame(playerInput, solution));
                     for(int i = 0; i < attemptlist.size();i++){
                         cout << attemptlist[i] << endl;
                     }
                 }
-                if (attempt == solution){
+                if (playerInput == solution){//if guessed the word correctly
                     cout << "\nCongrats you solved the Wordle in " << i+1 << " attempts!" << endl;
                     won = true;
                     break;

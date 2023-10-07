@@ -4,17 +4,17 @@
 using namespace igloo;
 
 Context(TODO){
-    Spec(iisinstringigloo){
+    Spec(iisinstringigloo){//test for contains function
         int actual = contains('i', "igloo");
         int expected = 0;
         Assert::That(actual, Equals(expected));
     }
-    Spec(iisnotinstringglue){
+    Spec(iisnotinstringglue){//test for contains function
         int actual = contains('i', "glue");
         int expected = -1;
         Assert::That(actual, Equals(expected));
     }
-    Spec(helloisinstringvector){
+    Spec(helloisinstringvector){//test for containsList function
         std::string hello = "hello";
         std::vector<std::string> stringvec;
         stringvec.push_back("hello");
