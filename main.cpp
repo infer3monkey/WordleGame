@@ -10,21 +10,11 @@ int main(int argc, char* argv[]) {
 
     string attempt = "";
     string playerInput = "";
-    vector<string> allowedlist;
     vector<string> wordlist;
     vector<string> attemptlist;
     bool won = false;
 
-    ifstream file;
-    file.open("allowed.txt", ios::in);
-
-    if (file.is_open()){
-        string word;
-        while(file >> word){
-            allowedlist.push_back(word);
-        }
-        file.close();
-    }
+    
 
     ifstream file2;
     file2.open("words.txt", ios::in);
@@ -37,10 +27,20 @@ int main(int argc, char* argv[]) {
         file2.close();
     }
 
-    cout << mainmenu();
-
     string solution = chooseRandom(wordlist);//randomly generated solution
-    
+
+    ifstream file;
+    file.open("allowed.txt", ios::in);
+
+    if (file.is_open()){
+        string word;
+        while(file >> word){
+            wordlist.push_back(word);
+        }
+        file.close();
+    }
+
+    cout << mainmenu();
 
     bool mainmenubool = true;
 
@@ -69,13 +69,12 @@ int main(int argc, char* argv[]) {
     for(int i = 0; i < 6; i++){//wordle game
         getline(cin, attempt);
 
-        bool inAllowed = containsList(attempt, allowedlist);
         bool inWords = containsList(attempt, wordlist);
 
         if (attempt.length() != 5){
             cout << "invalid length try again" << endl;
             i--;//invalid attempt
-        } else if (inWords == false && inAllowed == false){
+        } else if (inWords == false){
             cout << "invalid word try again" << endl;
             i--;//invalid attempt
         } else { //valid attempt return the word with correct colors
