@@ -1,11 +1,12 @@
 #include <iostream>
 #include "wordle_functions.h"
 #include <fstream>
+#include <ctype.h>
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //put more things into header file, add the separate main menu options(stats, let people play again)
+    //put more things into header file, add the separate main menu options(stats)
     //add unit tests especially for the wordle game itself(check lecture video), add keyboard viewer, turn everything to caps
 
     string attempt = "";
@@ -13,8 +14,6 @@ int main(int argc, char* argv[]) {
     vector<string> wordlist;
     vector<string> attemptlist;
     bool won = false;
-
-    
 
     ifstream file2;
     file2.open("words.txt", ios::in);
@@ -48,7 +47,6 @@ int main(int argc, char* argv[]) {
         getline(cin, playerInput);
 
         if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
-            //mainmenubool = false;
             cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
             for(int i = 0; i < 6; i++){//wordle game
                 getline(cin, attempt);
@@ -57,10 +55,10 @@ int main(int argc, char* argv[]) {
 
                 if (attempt.length() != 5){
                     cout << "invalid length try again" << endl;
-                    i--;//invalid attempt
+                    i--;
                 } else if (inWords == false){
                     cout << "invalid word try again" << endl;
-                    i--;//invalid attempt
+                    i--;
                 } else { //valid attempt return the word with correct colors
                     attemptlist.push_back(wordleGame(attempt, solution));
                     for(int i = 0; i < attemptlist.size();i++){
@@ -96,16 +94,13 @@ int main(int argc, char* argv[]) {
                 }
             }
             cout << "\n" << mainmenu();
-        } else if (stoi(playerInput) == 6){
+        } else if (stoi(playerInput) == 5){//player wants to exit
             mainmenubool = false;
         } else {
             cout << "not a proper option or have not created it\nSelect a number:";
         }
         
     }
-
-    
-    
 
     return 0;
 }
