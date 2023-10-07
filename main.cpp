@@ -42,17 +42,24 @@ int main(int argc, char* argv[]) {
     string solution = chooseRandom(wordlist);//randomly generated solution
     
 
-    bool mainmenu = true;
+    bool mainmenubool = true;
 
-    while(mainmenu){ //main menu screen making sure input is valid
-        cin >> playerInput;
+    while(mainmenubool){ //main menu screen making sure input is valid
+        getline(cin, playerInput);
 
         if (stoi(playerInput) == 1){//player wants to play wordle, breaks the program if not integer
-            mainmenu = false;//change this later
+            mainmenubool = false;
             cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
         } else if (stoi(playerInput) == 2) {//player wants to go to how to play screen
             cout << howtoplaymenu();
-            
+            bool howtoplaymenu = true;
+            while(howtoplaymenu){
+                getline(cin, playerInput);
+                if(playerInput == ""){
+                    howtoplaymenu = false;
+                }
+            }
+            cout << "\n" << mainmenu();
         } else {
             cout << "not a proper option or have not created it\nSelect a number:";
         }
@@ -60,7 +67,7 @@ int main(int argc, char* argv[]) {
     }
 
     for(int i = 0; i < 6; i++){//wordle game
-        cin >> attempt;
+        getline(cin, attempt);
 
         bool inAllowed = containsList(attempt, allowedlist);
         bool inWords = containsList(attempt, wordlist);
