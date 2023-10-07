@@ -65,7 +65,16 @@ std::string howtoplaymenu(){
     howtoplay += GREEN "/---\\" RESET "/---\\/---\\/---\\/---\\\n";//this works optimize stuff
     howtoplay += GREEN"| H |" RESET "| E || L || L || O |\n";
     howtoplay += GREEN "\\---/" RESET "\\---/\\---/\\---/\\---/\n";
-    howtoplay += BOLD "H " RESET "is in the word and the correct spot";
+    howtoplay += BOLD "H " RESET "is in the word and the correct spot\n";
+    howtoplay += YELLOW "/---\\" RESET "/---\\/---\\/---\\/---\\\n";
+    howtoplay += YELLOW"| W |" RESET "| O || R || L || D |\n";
+    howtoplay += YELLOW "\\---/" RESET "\\---/\\---/\\---/\\---/\n";
+    howtoplay += BOLD "W " RESET "is in the word but not the correct spot\n";
+    howtoplay += GRAY "/---\\" RESET "/---\\/---\\/---\\/---\\\n";
+    howtoplay += GRAY "| C |" RESET "| L || O || N || E |\n";
+    howtoplay += GRAY "\\---/" RESET "\\---/\\---/\\---/\\---/\n";
+    howtoplay += BOLD "C " RESET "is not in the word or the correct spot\n";
+    howtoplay += "\n\nPress [enter] to continue";
     return howtoplay;
 }
 
