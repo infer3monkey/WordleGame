@@ -6,8 +6,8 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //rename stuff for github publication, add stats
-    //add unit tests, add keyboard viewer, turn everything to caps
+    //add stat options, make case sensitivity not matter
+    //add unit tests, add keyboard viewer
 
     string playerInput = "";
     vector<string> wordlist = listgeneration();
