@@ -49,15 +49,42 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     std::vector<int> winlist;
     file2.open("statistics.txt", std::ios::in);
     int count = 1; //keeping track of whether the data is the solution, # of attempts, or whether or not you won
+    int index = 0; //keeping track of which index we are on for the vectors
+    int timesplayed = 0;
+    int averageattempts = 0;
+    float winpercentage = 0;
+    int currentstreak = 0;
+    int longeststreak = 0;
     if (file2.is_open()){
         std::string word;
         while(file2 >> word){
             if(count == 1){//word
-        
+                wordlist[index] = word;
+                count++;
+            } else if (count == 2){//# of attempts
+                attemptnumlist[index] = stoi(word);
+                averageattempts+= stoi(word);
+                count++;
+            } else {
+                winlist[index] = stoi(word);
+                winpercentage+= stoi(word);
+                if (stoi(word) == 1){ //won
+                    currentstreak++;
+                } else { //lost
+                    currentstreak = 0;
+                }
+                if (currentstreak > longeststreak){
+                    longeststreak = currentstreak;
+                }
+                count = 1;
+                index++;
             }
         }
         file2.close();
     }
+    timesplayed = index+1;
+    averageattempts = averageattempts/(index+1);
+    winpercentage = winpercentage/(index+1);
     
     str += "================================\n";
     str += "       Statistics Summary       \n";
