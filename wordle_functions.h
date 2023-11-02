@@ -40,8 +40,6 @@ std::string mainmenu(){//creates a string with the main menu
     return str;
 }
 
-//Times Played, Average Attempts, Win Percentage, Current Streak, Longest Streak
-
 std::string statisticssummary(){//creates a string with the statistic summary page
     std::string str;
     //grab values from file
@@ -60,7 +58,17 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "Word         Attempts        Win\n";
     str += "--------------------------------\n";
     //grab values from file
+    return str;
+}
 
+void updatingstatistics(std::string solution, bool won, int attempts){
+    std::ofstream file;
+    file.open("statistics.txt", std::ios::app);//opening file for appending values
+
+    if (file.is_open()){
+        file << solution << " " << attempts << " " << won;
+    }
+    file.close();
 }
 
 bool containsList(std::string lookingFor, std::vector<std::string> list){//returns whether or not a specific string is in a list of strings

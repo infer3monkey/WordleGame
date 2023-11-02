@@ -37,10 +37,12 @@ int main(int argc, char* argv[]) {
                 if (playerInput == solution){//if guessed the word correctly
                     cout << "\nCongrats you solved the Wordle in " << i+1 << " attempts!" << endl;
                     won = true;
+                    updatingstatistics(solution, won, i+1);
                     break;
                 }
             }
             if (won == false){//loss message
+                updatingstatistics(solution, won, 6);
                 cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
             }
             bool wordlegamemenu = true;
@@ -64,7 +66,15 @@ int main(int argc, char* argv[]) {
             }
             cout << "\n" << mainmenu();
         } else if (stoi(playerInput) == 3){//player wants to see statistics page
-            //add menu
+            cout << statisticssummary();
+            bool statisticsmenu = true;
+            while(statisticsmenu){
+                getline(cin, playerInput);
+                if(playerInput == ""){
+                    statisticsmenu = false;
+                }
+            }
+            cout << "\n" << mainmenu();
         } else if (stoi(playerInput) == 5){//player wants to exit
             mainmenubool = false;
         } else {
