@@ -43,6 +43,21 @@ std::string mainmenu(){//creates a string with the main menu
 std::string statisticssummary(){//creates a string with the statistic summary page
     std::string str;
     //grab values from file
+    std::ifstream file2;
+    std::vector<std::string> wordlist;
+    std::vector<int> attemptnumlist;
+    std::vector<int> winlist;
+    file2.open("statistics.txt", std::ios::in);
+    int count = 1; //keeping track of whether the data is the solution, # of attempts, or whether or not you won
+    if (file2.is_open()){
+        std::string word;
+        while(file2 >> word){
+            if(count == 1){//word
+        
+            }
+        }
+        file2.close();
+    }
     
     str += "================================\n";
     str += "       Statistics Summary       \n";
