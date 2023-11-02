@@ -53,14 +53,10 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "Current Streak:                 \n";
     str += "Longest Streak:                 \n";
     str += "\n";
-    str += "\n";
     str += "--------------------------------\n";
     str += "Word         Attempts        Win\n";
     str += "--------------------------------\n";
     //grab values from file
-    str += "\n";
-    str += "\n";
-    str += "Press [enter] to continue";
     return str;
 }
 

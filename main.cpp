@@ -66,11 +66,9 @@ int main(int argc, char* argv[]) {
             }
             cout << "\n" << mainmenu();
         } else if (stoi(playerInput) == 3){//player wants to see statistics page
-            
-        } else if (stoi(playerInput) == 4){//players wants to reset the statistics
-            resetstatistics();
             cout << statisticssummary();
             bool statisticsmenu = true;
+            cout << "Press [enter] to go back to the main menu\n";
             while(statisticsmenu){
                 getline(cin, playerInput);
                 if(playerInput == ""){
@@ -78,6 +76,19 @@ int main(int argc, char* argv[]) {
                 }
             }
             cout << "\n" << mainmenu();
+        } else if (stoi(playerInput) == 4){//players wants to reset the statistics
+            resetstatistics();
+            cout << statisticssummary();
+            bool statisticsmenu = true;
+            cout << "Press [enter] to go back to the main menu\n";
+            while(statisticsmenu){
+                getline(cin, playerInput);
+                if(playerInput == ""){
+                    statisticsmenu = false;
+                }
+            }
+            cout << "\n" << mainmenu();
+
         } else if (stoi(playerInput) == 5){//player wants to exit
             mainmenubool = false;
         } else {
