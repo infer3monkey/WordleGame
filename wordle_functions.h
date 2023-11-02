@@ -40,6 +40,29 @@ std::string mainmenu(){//creates a string with the main menu
     return str;
 }
 
+//Times Played, Average Attempts, Win Percentage, Current Streak, Longest Streak
+
+std::string statisticssummary(){//creates a string with the statistic summary page
+    std::string str;
+    //grab values from file
+    
+    str += "================================\n";
+    str += "       Statistics Summary       \n";
+    str += "================================\n";
+    str += "Times Played:                   \n";
+    str += "Average Attempts:               \n";
+    str += "Win Percentage:                 \n";
+    str += "Current Streak:                 \n";
+    str += "Longest Streak:                 \n";
+    str += "\n";
+    str += "\n";
+    str += "--------------------------------\n";
+    str += "Word         Attempts        Win\n";
+    str += "--------------------------------\n";
+    //grab values from file
+
+}
+
 bool containsList(std::string lookingFor, std::vector<std::string> list){//returns whether or not a specific string is in a list of strings
     if(std::find(list.begin(), list.end(), lookingFor) != list.end()) {
         return true;

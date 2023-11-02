@@ -63,6 +63,8 @@ int main(int argc, char* argv[]) {
                 }
             }
             cout << "\n" << mainmenu();
+        } else if (stoi(playerInput) == 3){//player wants to see statistics page
+            //add menu
         } else if (stoi(playerInput) == 5){//player wants to exit
             mainmenubool = false;
         } else {
