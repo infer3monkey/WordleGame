@@ -66,6 +66,9 @@ int main(int argc, char* argv[]) {
             }
             cout << "\n" << mainmenu();
         } else if (stoi(playerInput) == 3){//player wants to see statistics page
+            
+        } else if (stoi(playerInput) == 4){//players wants to reset the statistics
+            resetstatistics();
             cout << statisticssummary();
             bool statisticsmenu = true;
             while(statisticsmenu){

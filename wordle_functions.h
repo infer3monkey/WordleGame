@@ -58,6 +58,9 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "Word         Attempts        Win\n";
     str += "--------------------------------\n";
     //grab values from file
+    str += "\n";
+    str += "\n";
+    str += "Press [enter] to continue";
     return str;
 }
 
@@ -68,6 +71,12 @@ void updatingstatistics(std::string solution, bool won, int attempts){
     if (file.is_open()){
         file << solution << " " << attempts << " " << won;
     }
+    file.close();
+}
+
+void resetstatistics(){
+    std::ofstream file;
+    file.open("statistics.txt", std::ios::out);
     file.close();
 }
 
