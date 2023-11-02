@@ -60,13 +60,16 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
         std::string word;
         while(file2 >> word){
             if(count == 1){//word
+                std::cout << word << " ";
                 wordlist[index] = word;
                 count++;
             } else if (count == 2){//# of attempts
+                std::cout << word << " ";
                 attemptnumlist[index] = stoi(word);
                 averageattempts+= stoi(word);
                 count++;
             } else {
+                std::cout << word << " ";
                 winlist[index] = stoi(word);
                 winpercentage+= stoi(word);
                 if (stoi(word) == 1){ //won
@@ -81,9 +84,11 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
                 index++;
             }
         }
-        file2.close();
     }
-    timesplayed = index+1;
+    file2.close();
+    if (timesplayed != 0){
+        timesplayed = index+1;
+    }
     averageattempts = averageattempts/(index+1);
     winpercentage = winpercentage/(index+1);
     
