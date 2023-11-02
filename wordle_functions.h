@@ -1,6 +1,7 @@
 #ifndef WORDLE_FUNCTIONS_H
 #define WORDLE_FUNCTIONS_H
 
+#include <string>
 #define GREEN "\033[32m"
 #define GRAY "\033[37m"
 #define YELLOW "\033[33m"
@@ -36,7 +37,7 @@ std::string mainmenu(){//creates a string with the main menu
     str += "\n";
     str += "\n";
     str += "Select a number:";
-
+    //std::cout << str; for later
     return str;
 }
 
@@ -52,7 +53,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     int index = 0; //keeping track of which index we are on for the vectors
     int timesplayed = 0;
     int averageattempts = 0;
-    float winpercentage = 0;
+    double winpercentage = 0;
     int currentstreak = 0;
     int longeststreak = 0;
     if (file2.is_open()){
@@ -89,11 +90,11 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "================================\n";
     str += "       Statistics Summary       \n";
     str += "================================\n";
-    str += "Times Played:                   \n";
-    str += "Average Attempts:               \n";
-    str += "Win Percentage:                 \n";
-    str += "Current Streak:                 \n";
-    str += "Longest Streak:                 \n";
+    str += "Times Played:                  " + std::to_string(timesplayed);
+    str += "\nAverage Attempts:              " + std::to_string(averageattempts);
+    str += "\nWin Percentage:                " + std::to_string(winpercentage);
+    str += "\nCurrent Streak:                " + std::to_string(currentstreak);
+    str += "\nLongest Streak:                " + std::to_string(longeststreak);
     str += "\n";
     str += "--------------------------------\n";
     str += "Word         Attempts        Win\n";
