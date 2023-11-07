@@ -48,30 +48,28 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     std::vector<std::string> wordlist;
     std::vector<int> attemptnumlist;
     std::vector<int> winlist;
-    file2.open("statistics.txt", std::ios::in);
+    
     int count = 1; //keeping track of whether the data is the solution, # of attempts, or whether or not you won
-    int index = 0; //keeping track of which index we are on for the vectors
     int timesplayed = 0;
     int averageattempts = 0;
     double winpercentage = 0;
     int currentstreak = 0;
     int longeststreak = 0;
+    file2.open("statistics.txt", std::ios::in);
     if (file2.is_open()){
         std::string word;
-        while(file2 >> word){
+        std::cout << "file has opened\n";
+        while(file2 >> word){//this is where the problem is
             if(count == 1){//word
-                std::cout << word << " ";
-                wordlist[index] = word;
+                wordlist.push_back(word);
                 count++;
             } else if (count == 2){//# of attempts
-                std::cout << word << " ";
-                attemptnumlist[index] = stoi(word);
+                attemptnumlist.push_back(stoi(word));
                 averageattempts+= stoi(word);
                 count++;
-            } else {
-                std::cout << word << " ";
-                winlist[index] = stoi(word);
-                winpercentage+= stoi(word);
+            } else { //win or loss
+                winlist.push_back(stoi(word));
+                winpercentage += stoi(word);
                 if (stoi(word) == 1){ //won
                     currentstreak++;
                 } else { //lost
@@ -81,16 +79,13 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
                     longeststreak = currentstreak;
                 }
                 count = 1;
-                index++;
+                timesplayed++;
             }
         }
+         file2.close();
     }
-    file2.close();
-    if (timesplayed != 0){
-        timesplayed = index+1;
-    }
-    averageattempts = averageattempts/(index+1);
-    winpercentage = winpercentage/(index+1);
+    averageattempts = averageattempts/(timesplayed);
+    winpercentage = winpercentage/(timesplayed);
     
     str += "================================\n";
     str += "       Statistics Summary       \n";
@@ -114,6 +109,9 @@ void updatingstatistics(std::string solution, bool won, int attempts){
 
     if (file.is_open()){
         file << solution << " " << attempts << " " << won;
+        //file << solution << "\n";
+        //file << attempts << "\n";
+        //file << won << "\n";
     }
     file.close();
 }
