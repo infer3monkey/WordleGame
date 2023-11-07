@@ -58,8 +58,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     file2.open("statistics.txt", std::ios::in);
     if (file2.is_open()){
         std::string word;
-        std::cout << "file has opened\n";
-        while(file2 >> word){//this is where the problem is
+        while(file2 >> word){
             if(count == 1){//word
                 wordlist.push_back(word);
                 count++;
@@ -69,14 +68,14 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
                 count++;
             } else { //win or loss
                 winlist.push_back(stoi(word));
-                winpercentage += stoi(word);
                 if (stoi(word) == 1){ //won
                     currentstreak++;
+                    if (currentstreak > longeststreak){
+                    longeststreak = currentstreak;
+                    }
+                    winpercentage += 1;
                 } else { //lost
                     currentstreak = 0;
-                }
-                if (currentstreak > longeststreak){
-                    longeststreak = currentstreak;
                 }
                 count = 1;
                 timesplayed++;
@@ -106,12 +105,8 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
 void updatingstatistics(std::string solution, bool won, int attempts){
     std::ofstream file;
     file.open("statistics.txt", std::ios::app);//opening file for appending values
-
     if (file.is_open()){
-        file << solution << " " << attempts << " " << won;
-        //file << solution << "\n";
-        //file << attempts << "\n";
-        //file << won << "\n";
+        file << solution << " " << attempts << " " << won << "\n";
     }
     file.close();
 }
