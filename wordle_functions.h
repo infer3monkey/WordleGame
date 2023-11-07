@@ -52,7 +52,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     int count = 1; //keeping track of whether the data is the solution, # of attempts, or whether or not you won
     int timesplayed = 0;
     int averageattempts = 0;
-    double winpercentage = 0;
+    //double winpercentage = 0;
     int currentstreak = 0;
     int longeststreak = 0;
     file2.open("statistics.txt", std::ios::in);
@@ -73,7 +73,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
                     if (currentstreak > longeststreak){
                     longeststreak = currentstreak;
                     }
-                    winpercentage += 1;
+                    //winpercentage += 1;
                 } else { //lost
                     currentstreak = 0;
                 }
@@ -84,14 +84,16 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
          file2.close();
     }
     averageattempts = averageattempts/(timesplayed);
-    winpercentage = winpercentage/(timesplayed);
+    if (timesplayed > 0){
+        //winpercentage = (winpercentage/(timesplayed))*100;
+    }
     
     str += "================================\n";
     str += "       Statistics Summary       \n";
     str += "================================\n";
     str += "Times Played:                  " + std::to_string(timesplayed);
     str += "\nAverage Attempts:              " + std::to_string(averageattempts);
-    str += "\nWin Percentage:                " + std::to_string(winpercentage);
+    str += "\nWin Percentage:                "; //+ std::to_string(winpercentage);
     str += "\nCurrent Streak:                " + std::to_string(currentstreak);
     str += "\nLongest Streak:                " + std::to_string(longeststreak);
     str += "\n";
