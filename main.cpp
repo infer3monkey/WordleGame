@@ -8,6 +8,7 @@ using namespace std;
 int main(int argc, char* argv[]) {
     //add stat options, make case sensitivity not matter
     //add unit tests, add keyboard viewer
+    //list of stuff does not reset after playing
 
     string playerInput = "";
     vector<string> wordlist = listgeneration();
@@ -45,6 +46,7 @@ int main(int argc, char* argv[]) {
                 updatingstatistics(solution, won, 6);
                 cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
             }
+            attemptlist.clear();
             bool wordlegamemenu = true;
             cout << "Press [enter] to go back to the main menu\n";
             while(wordlegamemenu){

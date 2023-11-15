@@ -81,9 +81,9 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
                 timesplayed++;
             }
         }
-         file2.close();
+        file2.close();
     }
-    averageattempts = averageattempts/(timesplayed);
+    //averageattempts = averageattempts/(timesplayed); this was causing the floating error exception
     if (timesplayed > 0){
         //winpercentage = (winpercentage/(timesplayed))*100;
     }
@@ -115,7 +115,8 @@ void updatingstatistics(std::string solution, bool won, int attempts){
 
 void resetstatistics(){
     std::ofstream file;
-    file.open("statistics.txt", std::ios::out);
+    //file.open("statistics.txt", std::ios::out);
+    file.open("statistics.txt");
     file.close();
 }
 
