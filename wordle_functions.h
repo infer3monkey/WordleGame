@@ -52,7 +52,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     int count = 1; //keeping track of whether the data is the solution, # of attempts, or whether or not you won
     int timesplayed = 0;
     int averageattempts = 0;
-    //double winpercentage = 0;
+    double winpercentage = 0;
     int currentstreak = 0;
     int longeststreak = 0;
     file2.open("statistics.txt", std::ios::in);
@@ -73,7 +73,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
                     if (currentstreak > longeststreak){
                     longeststreak = currentstreak;
                     }
-                    //winpercentage += 1;
+                    winpercentage += 1;
                 } else { //lost
                     currentstreak = 0;
                 }
@@ -83,9 +83,10 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
         }
         file2.close();
     }
-    //averageattempts = averageattempts/(timesplayed); this was causing the floating error exception
+    int winperc = 0;
     if (timesplayed > 0){
-        //winpercentage = (winpercentage/(timesplayed))*100;
+        averageattempts = averageattempts/(timesplayed);
+        winperc = ((winpercentage/(timesplayed))*100);
     }
     
     str += "================================\n";
@@ -93,7 +94,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "================================\n";
     str += "Times Played:                  " + std::to_string(timesplayed);
     str += "\nAverage Attempts:              " + std::to_string(averageattempts);
-    str += "\nWin Percentage:                "; //+ std::to_string(winpercentage);
+    str += "\nWin Percentage:              " + std::to_string(winperc) + "%";
     str += "\nCurrent Streak:                " + std::to_string(currentstreak);
     str += "\nLongest Streak:                " + std::to_string(longeststreak);
     str += "\n";
@@ -101,6 +102,14 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "Word         Attempts        Win\n";
     str += "--------------------------------\n";
     //grab values from file
+    for (int i = 0; i < timesplayed;i++){
+        str += wordlist[i] + "           " + std::to_string(attemptnumlist[i]) + "            ";
+        if (winlist[i] == 1){
+            str += "WIN\n";
+        } else {
+            str += "LOSS\n";
+        }
+    }
     return str;
 }
 

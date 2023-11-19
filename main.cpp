@@ -6,9 +6,10 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    //add stat options, make case sensitivity not matter
+    //make case sensitivity not matter
     //add unit tests, add keyboard viewer
-    //list of stuff does not reset after playing
+    //make main cleaner
+    //possibly incorporate a struct
 
     string playerInput = "";
     vector<string> wordlist = listgeneration();
@@ -68,6 +69,7 @@ int main(int argc, char* argv[]) {
             }
             cout << "\n" << mainmenu();
         } else if (stoi(playerInput) == 3){//player wants to see statistics page
+            //cout.precision(2);
             cout << statisticssummary();
             bool statisticsmenu = true;
             cout << "Press [enter] to go back to the main menu\n";
