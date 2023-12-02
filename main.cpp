@@ -16,6 +16,7 @@ int main(int argc, char* argv[]) {
     string playerInput = "";
     vector<string> wordlist = listgeneration();
     vector<string> attemptlist;
+    vector<string> attemptlist2;
     bool won = false;
     cout << mainmenu();
     bool mainmenubool = true;
@@ -25,6 +26,7 @@ int main(int argc, char* argv[]) {
 
         if (stoi(playerInput) == 1){//player wants to play wordle
             string solution = solutiongeneration();
+            keyboardfilemaker(attemptlist2, solution);
             cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
             for(int i = 0; i < 6; i++){//loop for 6 attempts
                 getline(cin, playerInput);
@@ -34,6 +36,8 @@ int main(int argc, char* argv[]) {
                     i--;
                 } else { //valid attempt return the word with correct colors
                     attemptlist.push_back(wordleGame(playerInput, solution));
+                    attemptlist2.push_back(playerInput);
+                    keyboardfilemaker(attemptlist2, solution);
                     for(int i = 0; i < attemptlist.size();i++){
                         cout << attemptlist[i] << endl;
                     }
@@ -50,6 +54,7 @@ int main(int argc, char* argv[]) {
                 cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << endl;
             }
             attemptlist.clear();
+            attemptlist2.clear();
             bool wordlegamemenu = true;
             cout << "Press [enter] to go back to the main menu\n";
             while(wordlegamemenu){

@@ -96,7 +96,7 @@ std::string statisticssummary(){//creates a string with the statistic summary pa
     str += "================================\n";
     str += "Times Played:                  " + std::to_string(timesplayed);
     str += "\nAverage Attempts:              " + std::to_string(averageattempts);
-    str += "\nWin Percentage:              " + std::to_string(winperc) + "%";
+    str += "\nWin Percentage:                " + std::to_string(winperc) + "%";
     str += "\nCurrent Streak:                " + std::to_string(currentstreak);
     str += "\nLongest Streak:                " + std::to_string(longeststreak);
     str += "\n";
@@ -213,12 +213,15 @@ std::vector<std::string> listgeneration(){//generates valid list from words.txt 
     return wordlist;
 }
 
-void keyboardfilemaker(){//for creating a file with all the attempts for the keyboard
+void keyboardfilemaker(std::vector<std::string> attemptlist, std::string solution){//for creating a file with all the attempts for the keyboard
     std::ofstream file;
     file.open("guesses.txt", std::ios::out);
 
     if(file.is_open()){ //1st line is the solution the rest of the lines are the guesses
-        
+        file << solution << std::endl;
+        for(int i = 0; i < attemptlist.size();i++){
+            file << attemptlist[i] << std::endl;
+        }
     }
 }
 
