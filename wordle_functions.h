@@ -12,6 +12,7 @@
 #include<iostream>
 #include<algorithm>
 #include<fstream>
+#include "../keyboard/keyboard.h"//going into the keyboard file
 
 int contains (char letter, std::string str){//if letter is in string returns index it was found at otherwise returns -1
     for (int i = 0; i < str.length();i++){
@@ -38,6 +39,7 @@ std::string mainmenu(){//creates a string with the main menu
     str += "\n";
     str += "Select a number:";
     //std::cout << str; for later
+    updatekeyboard();
     return str;
 }
 
@@ -209,6 +211,15 @@ std::vector<std::string> listgeneration(){//generates valid list from words.txt 
     }
     
     return wordlist;
+}
+
+void keyboardfilemaker(){//for creating a file with all the attempts for the keyboard
+    std::ofstream file;
+    file.open("guesses.txt", std::ios::out);
+
+    if(file.is_open()){ //1st line is the solution the rest of the lines are the guesses
+        
+    }
 }
 
 std::string wordleGame(std::string attempt, std::string solution){//check for green, then check for yellow, then make everything else gray

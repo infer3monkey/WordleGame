@@ -2,3 +2,9 @@ hello 5 1
 hello 4 0
 hello 6 1
 hello 5 1
+verve 6 0
+smock 6 0
+smock 1 1
+smock 1 1
+bossy 6 0
+feral 6 0

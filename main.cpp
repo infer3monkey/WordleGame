@@ -6,15 +6,16 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+    //TO:DO
+    //add keyboard viewer
     //make case sensitivity not matter
-    //add unit tests, add keyboard viewer
+    //add unit tests
     //make main cleaner
     //possibly incorporate a struct
 
     string playerInput = "";
     vector<string> wordlist = listgeneration();
     vector<string> attemptlist;
-    string solution = solutiongeneration();
     bool won = false;
     cout << mainmenu();
     bool mainmenubool = true;
@@ -23,6 +24,7 @@ int main(int argc, char* argv[]) {
         getline(cin, playerInput);
 
         if (stoi(playerInput) == 1){//player wants to play wordle
+            string solution = solutiongeneration();
             cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << endl;
             for(int i = 0; i < 6; i++){//loop for 6 attempts
                 getline(cin, playerInput);
