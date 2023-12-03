@@ -12,7 +12,6 @@
 #include<iostream>
 #include<algorithm>
 #include<fstream>
-#include "../keyboard/keyboard.h"//going into the keyboard file
 
 int contains (char letter, std::string str){//if letter is in string returns index it was found at otherwise returns -1
     for (int i = 0; i < str.length();i++){
@@ -39,7 +38,6 @@ std::string mainmenu(){//creates a string with the main menu
     str += "\n";
     str += "Select a number:";
     //std::cout << str; for later
-    updatekeyboard();
     return str;
 }
 
@@ -294,6 +292,100 @@ std::string wordleGame(std::string attempt, std::string solution){//check for gr
         answer += result;
     }
     return answer;
+}
+void entirewordlegame(){
+    std::string playerInput = "";
+    std::vector<std::string> wordlist = listgeneration();
+    std::vector<std::string> attemptlist;
+    std::vector<std::string> attemptlist2;
+    bool won = false;
+    std::cout << mainmenu();
+    bool mainmenubool = true;
+
+    while(mainmenubool){ //main menu
+        getline(std::cin, playerInput);
+
+        if (stoi(playerInput) == 1){//player wants to play wordle
+            std::string solution = solutiongeneration();
+            keyboardfilemaker(attemptlist2, solution);
+            std::cout << "\nYou Are Now Playing Wordle. You Have 6 Valid Attempts" << std::endl;
+            for(int i = 0; i < 6; i++){//loop for 6 attempts
+                getline(std::cin, playerInput);
+                if (containsList(playerInput, wordlist) == false){
+                    std::cout << "invalid word" << std::endl;
+                    i--;
+                } else { //valid attempt return the word with correct colors
+                    attemptlist.push_back(wordleGame(playerInput, solution));
+                    attemptlist2.push_back(playerInput);
+                    keyboardfilemaker(attemptlist2, solution);
+                    for(int i = 0; i < attemptlist.size();i++){
+                        std::cout << attemptlist[i] << std::endl;
+                    }
+                }
+                if (playerInput == solution){//if guessed the word correctly
+                    std::cout << "\nCongrats you solved the Wordle in " << i+1 << " attempts!" << std::endl;
+                    won = true;
+                    updatingstatistics(solution, won, i+1);
+                    break;
+                }
+            }
+            if (won == false){//loss message
+                updatingstatistics(solution, won, 6);
+                std::cout << "You did not complete the Wordle in 6 attempts. The word was: " << solution << std::endl;
+            }
+            attemptlist.clear();
+            attemptlist2.clear();
+            bool wordlegamemenu = true;
+            std::cout << "Press [enter] to go back to the main menu\n";
+            while(wordlegamemenu){
+                getline(std::cin, playerInput);
+                if(playerInput == ""){
+                    wordlegamemenu = false;
+                }
+            }
+            std::cout << "\n" << mainmenu();
+
+        } else if (stoi(playerInput) == 2) {//player wants to go to how to play screen
+            std::cout << howtoplaymenu();
+            bool howtoplaymenu = true;
+            while(howtoplaymenu){
+                getline(std::cin, playerInput);
+                if(playerInput == ""){
+                    howtoplaymenu = false;
+                }
+            }
+            std::cout << "\n" << mainmenu();
+        } else if (stoi(playerInput) == 3){//player wants to see statistics page
+            //cout.precision(2);
+            std::cout << statisticssummary();
+            bool statisticsmenu = true;
+            std::cout << "Press [enter] to go back to the main menu\n";
+            while(statisticsmenu){
+                getline(std::cin, playerInput);
+                if(playerInput == ""){
+                    statisticsmenu = false;
+                }
+            }
+            std::cout << "\n" << mainmenu();
+        } else if (stoi(playerInput) == 4){//players wants to reset the statistics
+            resetstatistics();
+            std::cout << statisticssummary();
+            bool statisticsmenu = true;
+            std::cout << "Press [enter] to go back to the main menu\n";
+            while(statisticsmenu){
+                getline(std::cin, playerInput);
+                if(playerInput == ""){
+                    statisticsmenu = false;
+                }
+            }
+            std::cout << "\n" << mainmenu();
+
+        } else if (stoi(playerInput) == 5){//player wants to exit
+            mainmenubool = false;
+        } else {
+            std::cout << "not a proper option or have not created it\nSelect a number:";
+        }
+    }
 }
 
 #endif
