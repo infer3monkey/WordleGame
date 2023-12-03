@@ -3,7 +3,7 @@
 
 #include <string>
 #define GREEN "\033[32m"
-#define GRAY "\033[37m"
+#define GRAY "\033[90m"//was37
 #define YELLOW "\033[33m"
 #define BOLD "\033[1m"
 #define RESET "\033[0m"

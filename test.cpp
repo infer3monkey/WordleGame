@@ -42,7 +42,7 @@ Context(TODO){
         std::string expected;
         expected += GREEN"/---\\" RESET GRAY"/---\\" RESET GREEN"/---\\" RESET GREEN"/---\\" RESET GREEN"/---\\" RESET;
         expected += "\n";
-        expected += GREEN"| s |" RESET GRAY"| l |" RESET GREEN"| a |" RESET GREEN"| t |" RESET GREEN"| e |" RESET;
+        expected += GREEN"| s |" RESET GRAY"| t |" RESET GREEN"| a |" RESET GREEN"| t |" RESET GREEN"| e |" RESET;
         expected += "\n";
         expected += GREEN"\\---/" RESET GRAY"\\---/" RESET GREEN"\\---/" RESET GREEN"\\---/" RESET GREEN"\\---/" RESET;
         Assert::That(actual, Equals(expected));
