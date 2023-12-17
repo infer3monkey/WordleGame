@@ -6,7 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <map>
-#include "../wordle/wordle_functions.h"
+#include "../wordlegame/wordle_functions.h"
 
 #define GREEN "\033[32m"
 #define GRAY "\033[37m"
@@ -27,7 +27,7 @@ int findletterindex(char letter, std::vector<char> letters){
 void updatekeyboard(){
     std::ifstream file;
     std::string solution = "";
-    file.open("../wordle/guesses.txt", std::ios::in);
+    file.open("../wordlegame/guesses.txt", std::ios::in);
     std::vector<std::string> guesses;
     std::vector<char> letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     std::vector<int> lettervalues = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//0 is gray, 1 is yellow, 2 is green, 3 is for real gray
