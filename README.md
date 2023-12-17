@@ -1,14 +1,20 @@
 # Summary
 
-This is a project I'm making for school that has some creative flexibility.
+This is a project I made for school
 
 The project is a wordle clone, a popular game that can be run in the browser made by New York Times.
 
-In order to run the program you need to type `make` into the terminal when inside the folder and run it by typing `./app` into the terminal.
+In order to run the program you need to have two separate terminals open. type in `cd/keyboard'` in one and `cd/wordlegame` in the other
 
-Once the program is ran it will enter the main menu where it will give you 5 different options.
+Then type `./app` in both of them to run it
 
-Option one lets you play the game, option two lets you read about how to play the game, and option 5 lets you exit the program. The Option three and four will be added soon.
+The keyboard file will run infinitely unless stopped by using `ctrl + c` to force quit it
+
+Once the wordlegame program is ran it will enter the main menu where it will give you 5 different options.
+
+Option one lets you play the game, option two lets you read about how to play the game
+
+Option three lets you see your statistics, Option four lets you reset your statistics, and Option five lets you exit
 
 Thank you for looking at my project and hope you enjoy!
 
